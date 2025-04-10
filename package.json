@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev-hugo": "hugo server -s exampleSite --gc --themesDir=../..",
+    "dev-tailwind": "npx @tailwindcss/cli -i assets/css/main.css -o assets/css/index.css --watch",
+    "dev": "run-p dev-hugo dev-tailwind"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.1",
+    "tailwindcss": "^4.1.1"
+  }
+}

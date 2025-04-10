@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="flex flex-wrap items-center justify-between max-w-screen-xl mx-auto pb-4">
+    {{ range $index, $tag := .Data.Pages }}
+    <div class="flex-col justify-center items-center justify-around lg:w-1/2 px-5 py-5">
+        <div class="flex items-center justify-center">
+            <button class="text-3xl box-border border-1 px-2 border-gray-300 rounded-sm bg-green-600 hover:bg-green-500 dark:bg-gray-800 dark:text-green-400 dark:hover:bg-green-400 dark:hover:text-gray-800">
+                <a href="{{.RelPermalink}}">{{ $tag.Title }}</a>
+            </button>
+        </div>
+        <!-- Range -->
+        {{ $allPages := .Site.Pages }}
+        {{ $tagsPages := where $allPages ".Params.tags" "intersect" (slice $tag.Title) }}
+        {{ range $index, $tagPage := first 1 $tagsPages }}
+        <div class="h-48 flex gap-3 border border-gray-300 rounded-xl overflow-hidden items-center justify-start">
+            <div class="relative w-32 h-32 flex-shrink-0">
+                {{- if .Params.Thumbnail }}
+                <img class="absolute left-0 top-0 w-full h-full object-cover object-center transition duration-50"
+                     loading="lazy" src="/{{ .File.Dir }}{{ .Params.Thumbnail }}">
+                {{- else }}
+                <div class="relative w-32 h-32 flex-shrink-0">
+                </div>
+                {{ end }}
+            </div>
+            <div class="flex flex-col gap-2 py-2 px-2"> <!-- Card Content -->
+                <p class="text-xl font-bold">
+                    <a href="{{ .Permalink }}"> {{ .Title }}</a>
+                </p>
+                <p class="text-gray-500 dark:text-gray-400">{{ .Params.summary }}</p>
+            </div>
+        </div>
+
+        {{ end }}
+    </div>
+    <!-- End Range -->
+    {{ end }}
+</div>
+{{ end }}

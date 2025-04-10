@@ -1,0 +1,16 @@
+Home: Home
+PrepTime: Preparation Time
+CookTime: Cooking Time
+Servings: Servings
+Recipes: Recipes
+Tags: Tags
+Search: Search
+About: About
+LatestRecipes: Latest Recipes
+SeeAlso: See Also
+
+header.darkmode_toggle: Darkmode
+
+minute_with_count:
+  one: '{{ . }} Minute'
+  other: '{{ . }} Minuten'

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html class="" lang="{{ .Page.Language | default " en" }}">
+<head>
+    {{ partial "header.html" . }}
+    {{ partial "header.meta.html" . }}
+    {{ partial "scripts.html" . }}
+    <title>{{ .Site.Title }}</title>
+</head>
+<body class="text-grey-950 bg-gray-200 dark:bg-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+{{ partial "navbar" . }}
+{{ block "main" . }}{{ end }}
+{{ partial "footer" . }}
+<script defer>
+    (function () {
+            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+            const themeToggle = document.querySelector('.darkmode-toggle input');
+            const light = 'light';
+            const dark = 'dark';
+            let isDark = localStorage.theme === dark || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            if (isDark) {
+                document.documentElement.classList.add(dark);
+                themeToggle.checked = true;
+            } else {
+                document.documentElement.classList.remove(dark);
+                themeToggle.checked = false;
+            }
+
+            themeToggle.addEventListener('change', function () {
+                if (this.checked) {
+                    localStorage.theme = dark;
+                    document.documentElement.classList.add(dark);
+                } else {
+                    localStorage.theme = light;
+                    document.documentElement.classList.remove(dark);
+                }
+            })
+        }
+    )()
+</script>
+</body>

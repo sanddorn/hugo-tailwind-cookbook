@@ -1,0 +1,7 @@
+{{ $pages := .RegularPages }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{ range first 6 $pages }}
+{{- if and (not .Params.searchHidden) (ne .Layout `archives`) (ne .Layout `search`) }}
+{{ partial "list.card.html" . }}
+{{- end }}
+{{- end }}

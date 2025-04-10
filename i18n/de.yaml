@@ -1,0 +1,13 @@
+Home: Home
+PrepTime: Zubereitungszeit
+CookTime: Kochzeit
+Servings: Portionen
+Recipes: Rezepte
+Tags: Schlagworte
+Search: Suche
+About: Über
+LatestRecipes: Neueste Rezepte
+SeeAlso: Siehe auch
+minute_with_count:
+  one: '{{ . }} Minute'
+  other: '{{ . }} Minuten'
