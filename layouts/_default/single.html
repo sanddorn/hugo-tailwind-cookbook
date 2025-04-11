@@ -25,15 +25,65 @@
         {{- end }}
     </div>
 </div>
+{{ if .Params.images }}
+{{ $filePath := .File.Dir }}
+<div class="relative w-full max-w-4xl mx-auto">
+    <div class="overflow-hidden relative rounded-lg">
+        <div
+                class="flex transition-transform duration-500 ease-in-out transform"
+                id="carousel"
+        >
+        {{ range $index, $image := .Params.images }}
+            <div class="min-w-full">
+                <img
+                        src="{{ $filePath }}/{{ $image }}"
+                        alt="{{ T "Picture" }} {{ $index }}"
+                        class="w-full h-full object-cover"/>
+            </div>
+        {{ end }}
+        </div>
+    </div>
+    <button
+            class="absolute top-1/2 left-0 transform -translate-y-1/2 p-3 bg-gray-700 bg-opacity-50 rounded-full text-white hover:bg-opacity-75 focus:outline-none"
+            onclick="scrollCarousel(-1)"
+    >
+        <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+            ></path>
+        </svg>
+    </button>
+    <button
+            class="absolute top-1/2 right-0 transform -translate-y-1/2 p-3 bg-gray-700 bg-opacity-50 rounded-full text-white hover:bg-opacity-75 focus:outline-none"
+            onclick="scrollCarousel(1)"
+    >
+        <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+        >
+            <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+            ></path>
+        </svg>
+    </button>
+</div>
+{{ end }}
 <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto pb-4">
-    <!-- TODO:  carousel -->
-    {{ if .Params.images }}
-    {{ $filePath := .File.Dir }}
-    {{ range $image := first 1 .Params.images }}
-    <img class="h-[25vh]" src="/{{ $filePath }}/{{ . }}"/>
-    {{ end }}
-    {{ end }}
-
     <div class="block">
         <div class="content">
             {{ .Content }}
