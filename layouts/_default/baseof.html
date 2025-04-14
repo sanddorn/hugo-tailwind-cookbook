@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html class="" lang="{{ .Page.Language | default " en" }}">
+{{ $lang := .Page.Language | default "en" }}
+<html class="" lang="{{ $lang }}">
 <head>
     {{ partial "header.html" . }}
     {{ partial "header.meta.html" . }}
@@ -36,5 +37,17 @@
             })
         }
     )()
+
+    let currentIndex = 0;
+
+    function scrollCarousel(direction) {
+        const carousel = document.getElementById("carousel");
+        const totalSlides = carousel.children.length;
+        currentIndex =
+            (currentIndex + direction + totalSlides) % totalSlides;
+        carousel.style.transform = `translateX(-${
+            currentIndex * 100
+        }%)`;
+    }
 </script>
 </body>

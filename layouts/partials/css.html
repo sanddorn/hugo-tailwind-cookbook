@@ -5,4 +5,11 @@
 {{- $styles = $styles | minify | fingerprint -}}
 {{ end -}}
 <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
-<link rel="stylesheet" href="/css/carousel.css">
+
+{{- $styles := resources.Get "css/carousel.css" -}}
+{{- if hugo.IsDevelopment }}
+{{- $styles = $styles | fingerprint -}}
+{{ else }}
+{{- $styles = $styles | minify | fingerprint -}}
+{{ end -}}
+<link rel="stylesheet" href="{{ $styles.RelPermalink }}">
