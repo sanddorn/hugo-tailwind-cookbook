@@ -38,13 +38,13 @@
                 id="carousel"
         >
             {{ range $index, $image := .Params.images }}
-            <div class="min-w-full">
+            <div class="min-w-full aspect-[16/9] overflow-hidden">
                 {{ $altText := printf "%s %d" (T "Picture") $index }}
                 {{ $imagePath := printf "/%s/%s" $filePath $image }}
                 <img
                         src="{{ $imagePath }}"
                         alt="{{ $altText }}"
-                        class="w-full h-full object-cover"/>
+                        class="w-full h-full object-cover object-center"/>
             </div>
             {{ end }}
         </div>
