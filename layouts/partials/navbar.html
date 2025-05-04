@@ -16,30 +16,13 @@
             </span>
         </a>
         <ul class="flex-col gap-y-2 px-4 py-2 rounded-lg mt-4 w-full hidden peer-checked/hamburger:inline-flex lg:w-auto lg:inline-flex lg:flex-row lg:gap-x-2 lg:mt-0 lg:p-0 lg:rounded-none lg:bg-transparent text-xl">
+S            {{ range .Site.Menus.main }}
+            {{ $Name := .Name }}
             <li>
                 <a class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                   href="/">{{ T "Home" }}</a>
+                   href="{{ .URL }} ">{{ T $Name | default .Name }}</a>
             </li>
-            <li>
-                <a class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                   href="/posts">{{ T "Recipes" }}</a>
-            </li>
-            <li>
-                <a class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                   href="/tags">{{ T "Tags" }}</a>
-            </li>
-            {{- if .Params.isSearchEnabled }}
-            <li>
-                <a class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                   href="/search">{{ T "Search" }}</a>
-            </li>
-            {{- end }}
-            {{ if .Site.GetPage "about.md" }}
-            <li>
-                <a class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"
-                   href="/about">{{ T "About" }}</a>
-            </li>
-            {{- end }}
+            {{ end }}
             {{ if $.Site.Params.DisplayRssButton }}
             <li>
                 <a class="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"

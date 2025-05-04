@@ -3,13 +3,12 @@
 
 name = "hugo-tailwind-cookbook"
 license = "THE BEER-WARE LICENSE"
-licenselink = "https://github.com/jtom38/hugo-cookbook/blob/master/LICENSE.md"
+licenselink = "https://github.com/sanddorn/hugo-tailwind-cookbook/blob/main/LICENSE"
 description = "Digital cookbook template for Hugo built with TailwindCSS."
 homepage = "https://github.com/sanddorn/hugo-tailwind-cookbook"
 repo = "https://github.com/sanddorn/hugo-tailwind-cookbook"
 tags = ["cookbook", "search", "recipes"]
 features = ["documentation", "menu", "nested sections", "search"]
-min_version = 0.25
 
 [author]
   name = "Nils Bokermann"
@@ -19,3 +18,8 @@ min_version = 0.25
   [[build.cachebusters]]
     source = 'layouts/.*'
     target = 'css'
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.145.0"
